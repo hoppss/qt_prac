@@ -14,6 +14,13 @@ sudo apt-get install libjson-dev
 
 void readStrJson(); //从字符串中读取JSON
 void readStrProJson(); //从字符串中读取JSON（内容复杂些）
+void jsonStr2File();
+
+void generateJsonArray();
+void array1();
+void array2();
+void translateArray1();
+void translateArray2();
 
 int main(int argc, char *argv[])
 {
@@ -21,6 +28,20 @@ int main(int argc, char *argv[])
         cout << "___________\n";
 
         readStrProJson();
+        cout << "___________\n";
+
+        generateJsonArray();
+        cout << "___________\n";
+
+
+        jsonStr2File();
+        cout << "___________\n";
+
+        array1();
+        array2();
+        translateArray1();
+        translateArray2();
+
 
         return 0;
 }
@@ -68,6 +89,12 @@ void readStrJson()
            << ", died in year " << died << endl;
   }
 
+  // json write to cpp
+  Json::StyledWriter sw;
+  std::string strr = sw.write(root);
+
+  std::cout <<"\n\n json write to string : \n" << strr << std::endl;
+
 }
 
 
@@ -94,6 +121,8 @@ void readStrProJson()
         */
 
         Json::Reader reader;
+        //    Json::Reader *readerinfo = new Json::Reader(Json::Features::strictMode());
+
         Json::Value value;
 
         if (reader.parse(strValue, value))
@@ -103,7 +132,7 @@ void readStrProJson()
                 const Json::Value arrayObj = value["array"];
                 for (unsigned int i = 0; i < arrayObj.size(); i++)
                 {
-                        if (!arrayObj[i].isMember("cpp"))
+                        if (!arrayObj[i].isMember("cpp"))   //"cpp" is a key
                                 continue;
                         out = arrayObj[i]["cpp"].asString();
                         cout << out;
@@ -113,5 +142,112 @@ void readStrProJson()
 
                 }
         }
+        bool isArray = value["array"].isArray();
+        std::cout << "judge json element is or not array  " << (int)isArray << std::endl;
+}
+
+void generateJsonArray(){
+    Json::Value root;
+    root["id"]=1244235;
+    root["describe"]="how SB you are";
+    root["Arry"].append("123");
+    root["Arry"].append("213");
+    root["Arry"].append("321");
+    Json::StyledWriter sw;
+    std::string res_str = sw.write(root);
+    std::cout << "json array : \n" << res_str << std::endl;
+
+    bool isArray = root["Arry"].isArray();
+    std::cout << "judge json element is or not array  " << (int)isArray << std::endl;
+};
+
+void jsonStr2File(){
+    Json::Value root;
+    root["name"] = "hopps";
+    root["age"] = 18;
+    root["gende"] = "male";
+    cout << endl << root << endl;
+
+    Json::StyledWriter writer;
+    ofstream os;
+    os << writer.write(root);
+    os.close();
+
+    bool isArray = root.isArray();  // flase
+    std::cout << "judge json element is or not array  " << (int)isArray << std::endl;
+}
+
+
+void array1(){
+    std::cout << "\n  array1 \n";
+
+    Json::Value  arrayObj;
+    for(int i=0; i<3; ++i){
+        Json::Value new_item;
+        new_item["id"] = i;
+        new_item["name"] = "hope";
+        arrayObj.append(new_item);
+    }
+    Json::FastWriter sw;
+    std::string out = sw.write(arrayObj);
+    std::cout << out << std::endl;
+}
+void array2(){
+    std::cout << "\n  array2 \n";
+    Json::Value  arrayObj;
+    for(int i=0; i<3; ++i){
+        Json::Value new_item;
+        new_item["id"] = i;
+        new_item["name"] = "hope";
+        arrayObj["array"].append(new_item);
+    }
+    Json::FastWriter sw;
+    std::string out = sw.write(arrayObj);
+    std::cout << out << std::endl;
 
 }
+
+void translateArray2(){
+    std::string  str = "{\"array\":[{\"id\":0,\"name\":\"hope\"},{\"id\":1,\"name\":\"hope\"},{\"id\":2,\"name\":\"hope\"}]}";
+
+    Json::Reader *readerInfo = new Json::Reader(Json::Features::strictMode());
+    Json::Value  root;
+
+    if(readerInfo->parse(str,root)){
+        if(root["array"].isArray()){
+            int nArraySize = root["array"].size();
+            for(int i=0; i<nArraySize; ++i){
+                int nId = root["array"][i]["id"].asInt();
+                std::string strName = root["array"][i]["name"].asString();
+                std::cout << "id " << nId << " name " << strName << std::endl;
+
+            }
+        }
+    }
+
+    ::delete readerInfo;
+    readerInfo = nullptr;
+}
+
+void translateArray1(){
+    std::string  str = "[{\"id\":0,\"name\":\"hope\"},{\"id\":1,\"name\":\"hope\"},{\"id\":2,\"name\":\"hope\"}]";
+
+    Json::Reader *readerInfo = new Json::Reader(Json::Features::strictMode());
+    Json::Value  root;
+
+    if(readerInfo->parse(str,root)){
+        if(root.isArray()){
+            int nArraySize = root.size();
+            for(int i=0; i<nArraySize; ++i){
+                int nId = root[i]["id"].asInt();
+                std::string strName = root[i]["name"].asString();
+                std::cout << "id " << nId << " name " << strName << std::endl;
+            }
+        }
+    }
+
+    ::delete readerInfo;
+    readerInfo = nullptr;
+}
+
+
