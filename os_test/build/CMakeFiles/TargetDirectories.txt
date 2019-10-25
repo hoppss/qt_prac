@@ -1,0 +1,3 @@
+/home/limao/Documents/qt_prac/os_test/build/CMakeFiles/edit_cache.dir
+/home/limao/Documents/qt_prac/os_test/build/CMakeFiles/rebuild_cache.dir
+/home/limao/Documents/qt_prac/os_test/build/CMakeFiles/os_test.dir

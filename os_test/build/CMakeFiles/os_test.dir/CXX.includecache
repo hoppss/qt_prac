@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/limao/Documents/qt_prac/os_test/main.cpp
+iostream
+-
+string
+-
+stdlib.h
+-
+thread
+-
+chrono
+-
+mutex
+-
+
