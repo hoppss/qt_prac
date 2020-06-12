@@ -1,48 +1,44 @@
 #include <iostream>
-#include <vector>
+#include <limits>
+#include <memory>
 #include <string>
-#include <sstream>
+#include <vector>
+#include <thread>
+#include <chrono>
+#include <string.h>
 
 using namespace std;
 
-enum mode{
-    pos=1,
-    vel=2,
-    cur=3,
-};
-class publish{
-public:
-    publish(){
-        nData = vector<int>(3,0);
-    }
-    //~publish();
-    void set(std::vector<double> v)
-    {
-        if(v.at(0) != 0.0){
-            cout << mode::pos << endl;}
-        else if(v.at(1)!= 0.0){
-            cout << mode::vel << endl;}
-        else if(v.at(2)!=0.0){
-            cout << mode::cur << endl;}
+#define RESET "\033[0m"
+#define RED   "\033[31m"
 
-    }
-    std::vector<int> nData;
+enum {
+    walking = 'WALK',
+    defending = 'DEFN',
+
+    tick = 'tick',
 };
+
 int main()
 {
+     int a = 100, b = 200;
+    const int *p= &a;
+    a = 200;
+    int* q = const_cast<int*>(p);   //
 
-    string s;
-    publish pb;
-    vector<double> v;
-    while(getline(cin,s))
-    {
-        stringstream ss(s);
-        string temp;
-        while(getline(ss,temp,' ')){
-            v.push_back(stod(temp));
-            pb.set(v);
-        }
-    }
-    cout << "Hello World!" << endl;
+    char cc = 'limao';
+
+    cout << walking << endl;
+    cout << defending << endl;
+    cout << tick      << endl;
+    cout << sizeof (walking) << endl;
+
+//https://blog.csdn.net/realxie/article/details/23304079
+    int temp = 'WALKQ';
+    char * array = (char *)&temp;
+    char buff[5] = {0};
+    strncpy(buff, array, 4);
+    cout << buff <<endl;
+
     return 0;
 }

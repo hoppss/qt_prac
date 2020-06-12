@@ -36,11 +36,5 @@ int main()
         }
 
 
-        cout << "quiet nan : " << std::numeric_limits<float>::quiet_NaN() << endl;
-
-        cout << "quiet nan {int } : "  << int(std::numeric_limits<float>::quiet_NaN() );
-
-
-
     return 0;
 }
