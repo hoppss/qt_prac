@@ -79,17 +79,6 @@ long getUtcSecs(int hour, int min, int sec){
       return ttt;
 }
 
-std::string GetStringDate(long utc_time){
-
-    struct tm *local = localtime(&utc_time);
-    char strTime[50];
-    sprintf(strTime,"%*.*d年%*.*d月%*.*d日",
-            4,4,local->tm_year+1900,
-            2,2,local->tm_mon+1,
-            2,2,local->tm_mday);
-
-    return strTime;
-}
 //struct tm
 //{
 //    int tm_sec;
@@ -175,10 +164,6 @@ int main()
 
       ttt = mktime(&mmm);
       cout << "utc time of 2019.6.30  11:03:50 " << ttt << endl;
-
-
-
-      cout <<"   " <<  GetStringDate(1562738756) << endl;
 
     return 0;
 }

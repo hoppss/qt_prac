@@ -31,15 +31,11 @@ class studentSortCriterionptr {
     public:
         bool operator() (const Student* a, const Student* b) const {
             /*先比较名du字；若名字相同，则比较年龄zhi。小的dao返回true*/
-            if(a->name < b->name)
-                return true;
-            else if(a->name == b->name) {
+
                 if(a->age < b->age)
                     return true;
                 else
                     return false;
-            } else
-                return false;
         }
 };
 
@@ -92,14 +88,18 @@ int main()
     /*构造一个测试的Student，可以看到，即使stuTemp与stu1实际上并不是同一个对象，
      *但当在set中查找时，仍会查找成功。这是因为已定义的studentSortCriterion的缘故。
      */
-    Student* stuTempptr = new Student("zhangsan",13,"male");
+    Student* stuTempptr = new Student("zhangsan",13,"female");
 
     set<Student*, studentSortCriterionptr>::iterator iter2;
     iter2 = stuSet2.find(stuTempptr); // functor actually check its name rather than pointer address
     if(iter2 != stuSet2.end()) {
-        cout << "yes" << (*iter2)->name << endl;
+        cout << "yes " << (*iter2)->name << " " << (*iter2)->sex << endl;
     } else {
         cerr << "Cannot fine the student!" << endl;
+    }
+    cerr << "iterator " << endl;
+    for(auto it3 = stuSet2.begin(); it3 != stuSet2.end();++it3){
+        cout << "yes " << (*it3)->name << " " << (*it3)->age << endl;
     }
     return 0;
 }
