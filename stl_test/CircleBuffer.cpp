@@ -30,6 +30,18 @@ public:
 
         showData();
     }
+    void resize(size_t length){
+        data_.clear();
+        length_ = length;
+        data_.resize(length_);
+    }
+    size_t size(){
+        return data_.size();
+    }
+    void clear(){
+        data_.clear();
+        length_=0;
+    }
     void showData(){
         for(size_t i=0; i< data_.size();++i ){
             std::cout << data_[i] << " ";
