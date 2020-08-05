@@ -23,3 +23,7 @@ int main(){
 
     return 0;
 }
+
+
+//eigen_value:  stored by row, might be complex(real, image), unordered
+//eigen_vector: stored by col, might every element is complex(real, image)
