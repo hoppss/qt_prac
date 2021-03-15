@@ -21,3 +21,8 @@ add_executable(8thread_args_ref 8thread_args_ref.cpp)
 add_executable(9thread_args_ref 9thread_args_ref2.cpp)
 
 add_executable(10thread_args_member_fun 10thread_args_member_fun.cpp)
+
+add_executable(mutex1 mutex1.cpp)
+
+add_executable(uniquelock uniquelock.cpp)
+
