@@ -26,3 +26,10 @@ add_executable(mutex1 mutex1.cpp)
 
 add_executable(uniquelock uniquelock.cpp)
 
+add_executable(danli_callonce0 danli_callonce0.cpp)
+
+add_executable(danli_callonce1 danli_callonce1.cpp)
+
+add_executable(cv cv.cpp)
+
+add_executable(async_feature async_feature.cpp)
