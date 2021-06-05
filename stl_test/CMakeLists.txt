@@ -18,4 +18,4 @@ add_executable(string_cmp string_cmp.cpp)
 add_executable(char_cast char.cpp)
 
 
-
+add_executable(bit bit.cpp)
