@@ -61,5 +61,8 @@ int main()
 
 
   if(status == std::future_status::ready) cout << "线程成功执行完毕，返回" << endl;
-    */
+  
+  // if(status == std::future_status::defered) 只有async 第一个参数为deferred 才会有这个状态。 延迟执行
+  // result.get();  // deferred 在get() 时线程才会跑，并且实际在主线程中 
+  */
 }
