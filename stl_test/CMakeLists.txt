@@ -17,5 +17,8 @@ add_executable(string_cmp string_cmp.cpp)
 
 add_executable(char_cast char.cpp)
 
-
 add_executable(bit bit.cpp)
+
+add_executable(copysign copysign.cpp)
+
+add_executable(cb circle_buffer.cpp)
