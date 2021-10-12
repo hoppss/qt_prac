@@ -8,15 +8,23 @@
 class CircleBuffer
 {
 public:
-  explicit CircleBuffer(int length)
+  CircleBuffer()
   {
     buffer_.clear();
-    length_ = length;
+  }
+
+  void resize(int length) {
+      length_ = length;
   }
 
   ~CircleBuffer()
   {
     std::cout << "Deconstruct" << std::endl;
+    buffer_.clear();
+  }
+
+  void clear() {
+      buffer_.clear();
   }
 
   void push_front(int d)
@@ -68,7 +76,8 @@ private:
 
 int main()
 {
-  CircleBuffer buffer(3);
+  CircleBuffer buffer;
+  buffer.resize(3);
 
   for (int i = 0; i < 20; ++i)
   {
