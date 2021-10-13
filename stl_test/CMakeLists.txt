@@ -22,3 +22,4 @@ add_executable(bit bit.cpp)
 add_executable(copysign copysign.cpp)
 
 add_executable(cb circle_buffer.cpp)
+add_executable(cb_2 circle_buffer_2.cpp)
