@@ -7,3 +7,5 @@ include_directories(.)
 
 add_library(${PROJECT_NAME}  SHARED   csvreader.cpp)
 add_executable(main   main.cpp  csvreader.cpp)
+add_executable(write  CSVWriter.cpp)
+add_executable(read  CSVReader.cpp)

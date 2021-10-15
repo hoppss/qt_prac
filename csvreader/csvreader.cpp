@@ -45,10 +45,6 @@ void CSVReader::getNLineDate(int line, vector<double>& result){
     result = this->data[line];
 }
 
-double CSVReader::getNdataOfLine(vector<double> temp_vec, int n){
-    return temp_vec[n];
-}
-
 vector<vector<double>>& CSVReader::getAllData(){
     return this->data;
 }
@@ -91,6 +87,3 @@ void CSVReader::saveToFile(string newName){
     out.close();
 
 };
-
-
-
