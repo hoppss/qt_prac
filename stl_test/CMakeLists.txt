@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8)
-add_compile_options(-std=c++11)
+add_compile_options(-std=c++14)
 project(vector_test)
 add_executable(${PROJECT_NAME} "main.cpp")
 add_executable(set set_container.cpp)
@@ -23,3 +23,5 @@ add_executable(copysign copysign.cpp)
 
 add_executable(cb circle_buffer.cpp)
 add_executable(cb_2 circle_buffer_2.cpp)
+
+add_executable(ve  vector_erase.cpp)
