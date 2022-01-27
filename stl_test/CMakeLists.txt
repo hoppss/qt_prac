@@ -28,3 +28,4 @@ add_executable(ve  vector_erase.cpp)
 
 add_executable(bound_area_line  bound_area_line.cpp)
 add_executable(bound_area_segment  bound_area_linesegment.cpp)
+add_executable(bound_area_segment2  bound_area_linesegment2.cpp)
