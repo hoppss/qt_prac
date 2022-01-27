@@ -25,3 +25,6 @@ add_executable(cb circle_buffer.cpp)
 add_executable(cb_2 circle_buffer_2.cpp)
 
 add_executable(ve  vector_erase.cpp)
+
+add_executable(bound_area_line  bound_area_line.cpp)
+add_executable(bound_area_segment  bound_area_linesegment.cpp)
