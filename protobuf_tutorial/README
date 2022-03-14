@@ -1,0 +1,17 @@
+1. proto3 和 proto2 协议有区别，不指定协议，默认是proto2
+2. proto3 去掉了required、optional， 只保留了repeated
+
+3. protoc -I=<.proto import path> --cpp_out=<生成cpp文件地址> --python_out=<>  --java_out=<>   <file_full_path/to/*.proto>
+   --proto-path=<proto的path， 只是path prefix>;  等效于 -I、  -IPATH、
+4. proto3 default标记不能使用
+
+5. proto3 枚举值第一个强制是0, proto2 不一定是0
+
+6. proto3 支持map，  map<string, Project> projects = 5;
+
+7. proto 文件首个非空的行，必须指定proto3版本， 否则按照proto2协议
+
+8. message 里面的字段，默认是singular， 意味着一个消息可以包含该字段0次，或者1次, 这里应该和第2条同义
+
+9. 
+
